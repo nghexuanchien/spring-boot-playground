@@ -1,0 +1,23 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head><title>View Batch</title></head>
+<body>
+    <form th:action="@{/viewBatch}" th:method="POST" th:object="${model}" id="mainForm">
+        <strong>Choose the batch:</strong>
+        <select th:field="*{selectedBatch.id}" onchange="submitForm()">
+            <option th:each="batch,iterStat : *{batches}" th:value="${batch.id}" th:text="${batch.name}"></option>
+        </select>
+        <br/><br/>
+        <strong>Students engaged to the batch: </strong><br/>
+        <ul>
+            <li th:each="student : *{selectedBatch.students}" th:text="${student.id} + ' - ' +  ${student.name}"></li>
+        </ul>
+    </form>
+
+    <script type="text/javascript">
+        function submitForm() {
+            document.getElementById('mainForm').submit();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="codersontrang" id="springmvchibernate-liquibase-demo-1">
+        <createTable tableName="STUDENT">
+            <column name="STUDENT_ID" type="VARCHAR(6)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="STUDENT_NAME" type="VARCHAR(20)"/>
+            <column name="BATCH_ID" type="INT"/>
+        </createTable>
+
+        <createTable tableName="BATCH">
+            <column name="BATCH_ID" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="BATCH_NAME" type="VARCHAR(20)"/>
+        </createTable>
+
+        <addAutoIncrement columnDataType="INT"
+                          columnName="BATCH_ID"
+                          incrementBy="1"
+                          startWith="1"
+                          tableName="BATCH"/>
+    </changeSet>
+
+
+    <changeSet author="codersontrang" id="springmvchibernate-liquibase-demo-2">
+        <insert tableName="BATCH">
+            <column name="BATCH_NAME" value="Batch 1"></column>
+        </insert>
+        <insert tableName="BATCH">
+            <column name="BATCH_NAME" value="Batch 2"></column>
+        </insert>
+
+        <insert tableName="STUDENT">
+            <column name="STUDENT_ID" value="S001"></column>
+            <column name="STUDENT_NAME" value="Student1"></column>
+            <column name="BATCH_ID" valueNumeric="1"></column>
+        </insert>
+        <insert tableName="STUDENT">
+            <column name="STUDENT_ID" value="S002"></column>
+            <column name="STUDENT_NAME" value="Student2"></column>
+            <column name="BATCH_ID" valueNumeric="1"></column>
+        </insert>
+        <insert tableName="STUDENT">
+            <column name="STUDENT_ID" value="S003"></column>
+            <column name="STUDENT_NAME" value="Student3"></column>
+            <column name="BATCH_ID" valueNumeric="2"></column>
+        </insert>
+        <insert tableName="STUDENT">
+            <column name="STUDENT_ID" value="S004"></column>
+            <column name="STUDENT_NAME" value="Student4"></column>
+            <column name="BATCH_ID" valueNumeric="2"></column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
